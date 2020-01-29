@@ -1,15 +1,26 @@
 import React, { Component } from 'react'
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login'
+import axios from 'axios'
+// import TextField from 'material-ui/TextField'
 
 export default class Login extends Component {
 
-      state = {
-        isLoggedIn: false,
-        userID: "",
-        name: "",
-        email: "",
-        picture: ""
-      };
+    state = {
+      isLoggedIn: '',
+      userID: '',
+      name: '',
+      email: '',
+      picture: '',
+      id: ''
+}
+componentDidMount(){
+  axios.get('/fblogin').then(res => {
+    this.setState({
+      id: res.data,
+      picture: ''
+    })
+  })
+}
     
       responseFacebook = response => {
         console.log(response);
@@ -35,7 +46,8 @@ export default class Login extends Component {
                 width: "400px",
                 margin: "auto",
                 background: "#f4f4f4",
-                padding: "20px"
+                padding: "20px",
+                borderRadius: '16px'
               }}
             >
               <img src={this.state.picture} alt={this.state.name} />
@@ -43,14 +55,16 @@ export default class Login extends Component {
               Email: {this.state.email}
             </div>
           );
-        } else {
+        } else if(this.state.id) {
           fbContent = (
             <FacebookLogin
-              appId=""
-              autoLoad={true}
+              appId={this.state.id}
+              autoLoad={false}
               fields="name,email,picture"
               onClick={this.componentClicked}
               callback={this.responseFacebook}
+              // cssClass="my-facebook-button-class"
+              icon="fa-facebook"
             />
           );
         }
