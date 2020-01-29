@@ -1,10 +1,10 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
+const fbcontroller = require('./controllers/fbcontroller')
 
 const { SERVER_PORT, 
-    CONNECTION_STRING, 
-    SESSION_SECRET 
+    CONNECTION_STRING
     } = process.env
 
     
@@ -12,16 +12,6 @@ const app = express()
 
 app.use(express.json())
 // app.use( express.static( `${__dirname}/../build` ) );
-// app.use(
-//     session({
-//         resave: false,
-//         saveUninitialized: false,
-//         secret: SESSION_SECRET,
-//         cookie: {
-//             maxAge: 1000 * 60 * 60
-//         }
-//     })
-// )
 
 
 massive(CONNECTION_STRING).then(db => {
@@ -32,7 +22,7 @@ massive(CONNECTION_STRING).then(db => {
     console.log(err.message)
 })
 
-
+app.get('/fblogin', fbcontroller.login)
 
 
 
