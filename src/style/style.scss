@@ -1,0 +1,55 @@
+$blue: #4e18ff;
+$facbookblue: #006BBC;
+$background: #252525;
+$darkgrey: #323232;
+$green: #44d7b6;
+$lightgrey: #4e4e4e;
+$white: #ffffff;
+$red: #e02020;
+$lightred: #ff5f5f;
+$gradiant: linear-gradient(to left, #ff5f5f 3%, #ffee00 49%, #44d7b6 96%);
+$boxshadowprams: 0 2px 10px 0 rgba(0,0,0,0.50);
+
+.Fbook{
+    background: $facbookblue;
+    height: 5vh;
+    width: 70%;
+    padding: 2%;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $boxshadowprams;
+    border: 1px solid $white;
+    h1{
+        margin-right: 5%;
+        color: $white;
+    }
+    .icon{
+        margin: 0 10% 0 5%;
+    }
+    &:hover{
+        cursor: pointer;
+        opacity: 50%;
+    }
+}
+.Loginpage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: $blue;
+    
+    .line{
+        height: 5px;
+        width: 85%;
+        background: $white;
+        border-radius: 16px;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+
+    }
+}

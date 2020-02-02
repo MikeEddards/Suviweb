@@ -1,11 +1,15 @@
 import React from 'react';
-import Login from './Components/Login'
+import {HashRouter} from 'react-router-dom'
+import routes from './routes'
+
 
 function App() {
+  
+
   return (
-    <div className="App">
-      <Login/>
-    </div>
+    <HashRouter >
+      {routes}
+    </HashRouter>
   );
 }
 

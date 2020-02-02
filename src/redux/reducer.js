@@ -21,7 +21,8 @@ export function updateUser(user){
 function reducer (state = initialState, action){
     switch(action.type){
         case UPDATE_USER:
-            const {userId, name, email, profilePic, friendsList, movieList}
+            console.log(action)
+            break
         default:
             return state
     }

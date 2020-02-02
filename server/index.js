@@ -1,7 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
-const fbcontroller = require('./controllers/fbcontroller')
+
 
 const { SERVER_PORT, 
     CONNECTION_STRING
@@ -22,7 +22,7 @@ massive(CONNECTION_STRING).then(db => {
     console.log(err.message)
 })
 
-app.get('/fblogin', fbcontroller.login)
+
 
 
 
