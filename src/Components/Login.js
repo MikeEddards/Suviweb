@@ -6,7 +6,7 @@ import {MuiThemeProvider, TextField} from '@material-ui/core'
 import {connect} from 'react-redux'
 import FbookLogin from './FbookLogin'
 import { updateUser } from '../redux/reducer'
-import logo from '../Assets/tempSuviLogo.png'
+import logo from '../Assets/SuviLogo.png'
 
 
 class Login extends Component {
