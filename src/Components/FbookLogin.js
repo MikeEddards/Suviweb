@@ -35,7 +35,7 @@ export class FbookLogin extends Component {
                            className='icon'  
                            icon={faFacebookF}
                            color={'#ffffff'}
-                           size='2x'
+                           size='1x'
                            />
                            <h1>Login with Facebook</h1>
                         </div>
