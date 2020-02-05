@@ -3,39 +3,31 @@ const bcrypt = require('bcryptjs')
 module.exports = {
 
     register: async (req, res) => {
-        const {username, email, first_name, last_name} = req.body
+        console.log(req.body)
+        const {email} = req.body
         const db = req.app.get('db')
         const {session} = req
-        const findUser = await db.check_username({username})
+        const findUser = await db.check_username({email})
         if(findUser[0]) return res.status(409).send('Username already exists')
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(req.body.password, salt)
         const createdUser = await db.register_user({
-            username,
-            password: hash,
             email,
-            first_name,
-            last_name
+            password: hash
         })
         session.user = {id: createdUser[0].id, username: createdUser[0].username}
         res.status(200).send(session.user)
     },
     login: async (req,res) => {
         const db = req.app.get('db')
-        const {username} = req.body
+        const {email} = req.body
         const {session} = req
-        const findUser = await db.check_username({username})
+        const findUser = await db.check_username({email})
         if(!findUser[0]) return res.status(409).send('Username does not exists')
         const auth = bcrypt.compareSync(req.body.password, findUser[0].password)
         if(auth){
-            
             session.user = {
-                id: findUser[0].id,
-                username: findUser[0].username,
-                email: findUser[0].email,
-                first_name: findUser[0].first_name,
-                last_name: findUser[0].last_name,
-                image: findUser[0].image
+                id: findUser[0].id
             }
             res.status(200).send(session.user)
         }else{

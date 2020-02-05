@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
+const auth = require('./controllers/authController')
 
 
 const { SERVER_PORT, 
@@ -34,7 +35,8 @@ massive(CONNECTION_STRING).then(db => {
     console.log(err.message)
 })
 
-
+app.post('/auth/login', auth.login)
+app.post('/auth/register', auth.register)
 
 
 

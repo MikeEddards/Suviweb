@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 import FbookLogin from './FbookLogin'
-import { updateUser } from '../redux/reducer'
+// import { updateUser } from '../redux/reducer'
 import logo from '../Assets/SuviLogo.png'
 
 
@@ -19,7 +19,15 @@ class Login extends Component {
           [e.target.name]: e.target.value
       })
   }
+  handleLogin = (e) =>{
+    // const {email,password}
+    // axios.post('/auth/login', {email,password})
+  }
   render() {
+    // pushes to dashboard if loged on with facebook
+    // if(this.props.gotRes == true){
+    //   this.props.history.push('/dashboard')
+    // } 
     return (
  
         <div className='Loginpage' >
@@ -30,24 +38,24 @@ class Login extends Component {
             <FbookLogin />
           </div>
           <div className='line' ></div>
-                  <form>
-          <input
-            label='email'
-            name='email'
-            placeholder='Email'
-            value={this.state.email}
-            onChange={this.handleChange}
-            />
+          <form onSubmit={this.handleLogin}>
+            <input
+              label='email'
+              name='email'
+              placeholder='Email'
+              value={this.state.email}
+              onChange={this.handleChange}
+              />
+            
           
-        
-            <input 
-            placeholder='Password'
-            type="password" 
-            name='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-            />
-            <button className='link' >Login</button>
+              <input 
+              placeholder='Password'
+              type="password" 
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              />
+              <button className='link' >Login</button>
           </form>
           <div className='linkctn'>
             <h1 className='title'>Don't have an account?</h1>
@@ -71,4 +79,4 @@ function mapStateToProps(state){
   return state
 }
 
-export default withRouter(connect(mapStateToProps, {updateUser})(Login))
+export default withRouter(connect(mapStateToProps, {})(Login))
