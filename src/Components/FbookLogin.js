@@ -2,23 +2,23 @@ import React, { Component } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
-
+import {Link, withRouter } from 'react-router-dom' 
+import { connect } from 'react-redux'
+import { updateUserFb } from '../redux/reducer'
 
 
 export class FbookLogin extends Component {
    
-    
-    
+
     handleFacebookRes = (res) => {
-        console.log(res)
+        this.props.updateUserFb(res)
+ 
     }      
 
     render() {
-    
-    
         return (
             <div className='fbcontainer'>
-                      
+               <Link>   
                 <FacebookLogin 
                     appId={process.env.REACT_APP_FACEBOOK_ID}
                     autoLoad={false}
@@ -42,8 +42,12 @@ export class FbookLogin extends Component {
 
                     )}
                 />
+                </Link>    
             </div>
         )
     }
 }
-export default FbookLogin
+function mapStateToProps(state){
+    return state
+}
+export default connect(mapStateToProps, {updateUserFb})(FbookLogin)
