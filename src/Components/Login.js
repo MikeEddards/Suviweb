@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import { Link, withRouter } from 'react-router-dom'
-import {MuiThemeProvider, TextField} from '@material-ui/core'
+
 
 import {connect} from 'react-redux'
 import FbookLogin from './FbookLogin'
@@ -21,7 +21,7 @@ class Login extends Component {
   }
   render() {
     return (
-      <MuiThemeProvider>
+ 
         <div className='Loginpage' >
           <div className='logocontaner' >
             <img src={logo} className='logo' />
@@ -40,7 +40,7 @@ class Login extends Component {
             />
           
         
-            <TextField 
+            <input 
             placeholder='Password'
             type="password" 
             name='password'
@@ -49,9 +49,20 @@ class Login extends Component {
             />
             <button className='link' >Login</button>
           </form>
+          <div className='linkctn'>
+            <h1 className='title'>Don't have an account?</h1>
+            <div>
+            <Link 
+            ><h1 className='links' >Sign up here!</h1></Link>
+            </div>
+          </div>
+          <div className='forgot'>
+            <Link>
+            <h1>Forgot Password?</h1>
+            </Link>
+          </div>
         </div>
 
-      </MuiThemeProvider>
     )
   }
 }

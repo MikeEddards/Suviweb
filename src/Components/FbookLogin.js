@@ -17,7 +17,7 @@ export class FbookLogin extends Component {
     
     
         return (
-            <div>
+            <div className='fbcontainer'>
                       
                 <FacebookLogin 
                     appId={process.env.REACT_APP_FACEBOOK_ID}
