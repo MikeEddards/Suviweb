@@ -60,7 +60,7 @@ class Login extends Component {
           <div className='linkctn'>
             <h1 className='title'>Don't have an account?</h1>
             <div>
-            <Link 
+            <Link to='register' 
             ><h1 className='links' >Sign up here!</h1></Link>
             </div>
           </div>

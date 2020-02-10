@@ -37,6 +37,7 @@ massive(CONNECTION_STRING).then(db => {
 
 app.post('/auth/login', auth.login)
 app.post('/auth/register', auth.register)
+app.post('/auth/fbregistered', auth.fBookRegisterCheck)
 
 
 
