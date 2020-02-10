@@ -5,8 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 import FbookLogin from './FbookLogin'
-// import { updateUser } from '../redux/reducer'
 import logo from '../Assets/SuviLogo.png'
+// import { updateUser } from '../redux/reducer'
 
 
 class Login extends Component {

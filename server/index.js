@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const auth = require('./controllers/authController')
+const omdbController = require('./controllers/omdbController')
 
 
 const { SERVER_PORT, 
@@ -38,6 +39,10 @@ massive(CONNECTION_STRING).then(db => {
 app.post('/auth/login', auth.login)
 app.post('/auth/register', auth.register)
 app.post('/auth/fbregistered', auth.fBookRegisterCheck)
+
+app.post('/search/title', omdbController.searchByTitle)
+
+
 
 
 

@@ -27,13 +27,13 @@ $font: 'Ubuntu', sans-serif;
         justify-content: center;
         border: 1px solid $white;
         h1{
-            margin-right: 20%;
+            // margin-right: 20%;
             color: $white;
             font-family: $font;
             font-weight: 600;
         }
         .icon{
-            margin: 0 20% 0 5%;
+            margin: 0 15% 0 5%;
         }
         &:hover{
             cursor: pointer;

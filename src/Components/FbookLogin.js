@@ -15,23 +15,42 @@ export class FbookLogin extends Component {
    }
 
     handleFacebookRes = (fbres) => {
+        console.log(fbres)
         this.setState({
             email: fbres.email
         })
-        axios.post('/auth/fbregistered', {
-            email: this.state.email
-        }).then(res => {
-            console.log(res.data)
-            this.setState({
-                isRegistered: res.data
+        if(this.props.history.location.pathname === '/register'){
+            axios.post('/auth/registerfb', {
+                email: this.state.email
+            }).then(res => {
+                console.log(res.data)
+                this.setState({
+                    isRegistered: res.data
+                })
+            }).then(_ => {
+                if(this.setState.isRegistered){
+                    this.props.updateUserFb(fbres)
+                }else{
+                    alert('Not registered')
+                }
             })
-        }).then(_ => {
-            if(this.setState.isRegistered){
-                this.props.updateUserFb(fbres)
-            }else{
-                alert('Not registered')
-            }
-        })
+        }else{
+            axios.post('/auth/fbregistered', {
+                email: this.state.email
+            }).then(res => {
+                console.log(res.data)
+                this.setState({
+                    isRegistered: res.data
+                })
+            }).then(_ => {
+                if(this.setState.isRegistered){
+                    this.props.updateUserFb(fbres)
+                }else{
+                    alert('Not registered')
+                }
+            })
+        }
+        
  
     }      
 
@@ -45,7 +64,6 @@ export class FbookLogin extends Component {
                     autoLoad={false}
                     fields="name,email,picture"
                     callback={this.handleFacebookRes}
-                    onClick={this.handleError}
                     scope="public_profile,user_friends"
                     render={renderProps => (
                         
@@ -58,7 +76,7 @@ export class FbookLogin extends Component {
                            color={'#ffffff'}
                            size='1x'
                            />
-                           {this.props.history.location.pathname == '/register'? <h1>Register with Facebook</h1> : <h1>Login with Facebook</h1> }
+                           {this.props.history.location.pathname === '/register'? <h1>Register with Facebook</h1> : <h1>Login with Facebook</h1> }
                            
                         </div>
 
