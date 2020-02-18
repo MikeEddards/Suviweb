@@ -192,4 +192,46 @@
   font-family: "Ubuntu", sans-serif;
   color: #ffffff;
 }
+
+.uploadimage {
+  background: #4e18ff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30vh;
+  width: 100vw;
+}
+
+.uploadimage .iconDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #4e4e4e;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 5px solid #ffffff;
+}
+
+.uploadimage .iconDiv p {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+}
 /*# sourceMappingURL=style.css.map */
