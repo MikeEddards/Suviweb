@@ -3,6 +3,7 @@ const express = require('express')
 const massive = require('massive')
 const session = require('express-session')
 const auth = require('./controllers/authController')
+const s3Controller = require('./controllers/s3Controller')
 const omdbController = require('./controllers/omdbController')
 
 
@@ -39,6 +40,8 @@ massive(CONNECTION_STRING).then(db => {
 app.post('/auth/login', auth.login)
 app.post('/auth/register', auth.register)
 app.post('/auth/fbregistered', auth.fBookRegisterCheck)
+
+app.get('/sign-s3', s3Controller.awsCall) 
 
 app.post('/search/title', omdbController.searchByTitle)
 
