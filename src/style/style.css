@@ -212,6 +212,41 @@
   width: 100vw;
 }
 
+.uploadimage .input {
+  background-color: #4e18ff;
+  border: none;
+  border-bottom: 2px solid white;
+  color: #ffffff;
+  font-family: "Ubuntu", sans-serif;
+  margin-top: 5%;
+  font-size: 1.4em;
+  padding-bottom: 2%;
+}
+
+.uploadimage .imageDiv {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  border: 5px solid #ffffff;
+  overflow: hidden;
+}
+
+.uploadimage .imageDiv img {
+  height: 100%;
+  width: auto;
+  border-radius: 50%;
+}
+
 .uploadimage .iconDiv {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -222,7 +257,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #4e4e4e;
+  background: #c3c3c3;
   color: #ffffff;
   border-radius: 50%;
   height: 100px;

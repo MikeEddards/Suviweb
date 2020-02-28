@@ -3,25 +3,29 @@ import axios from 'axios'
 import Dropzone from 'react-dropzone'
 import randomstring from 'randomstring'
 import {GridLoader} from 'react-spinners'
-import {MuiThemeProvider,TextField} from '@material-ui/core'
+import {connect} from 'react-redux'
+
+
 
 
 class ImageDropZone extends Component {
     state = {
         isUploading: false,
-        image: ''
+        image: '',
+        name: ''
     }
     getSignedRequest = ([file]) => {
         this.setState({isUploading: true})
         
         const fileName = `${randomstring.generate()}-${file.name.replace(/\s/g, '-')}`
-       
-        axios.get('/s3/sign', {
+        console.log(fileName)
+        axios.get('/sign-s3', {
             params: {
             'file-name': fileName,
             'file-type': file.type
             }
         }).then( (res) => {
+            console.log(res.data)
             const { signedRequest, url } = res.data 
     
             this.uploadFile(file, signedRequest, url)
@@ -38,17 +42,24 @@ class ImageDropZone extends Component {
                 };
             axios.put(signedRequest, file, header)
             .then((res) => {
+                console.log(res.data)
                 this.setState({
-                    logo: url,
+                    image: url,
                     isUploading: false
                 })
                 
             })
         }
+    handleChange = (e) =>{
+        this.setState({
+            name: e.target.value
+        })
+    }
+
 
     render() {
+
         return (
-            <MuiThemeProvider>
             <div className='uploadimage'>
             <Dropzone
             onDropAccepted={this.getSignedRequest}
@@ -60,37 +71,30 @@ class ImageDropZone extends Component {
                     {this.state.isUploading ? 
                     <GridLoader
                     size={35}
-                    color={'#34D1BF'} /> : this.state.image ? 
-                    <div className='logoUploaded'>
+                    color={'#ffffff'} /> : this.state.image ? 
+                    <div className='imageDiv'>
                         <img src={this.state.image} />
                     </div> :
                     <div className='iconDiv'>
-                      {/* <FontAwesomeIcon 
-                      icon={faImage}
-                      size='6x'
-                    color='#34d1bf'/> */}
                     <p>ADD PHOTO</p>
                     </div> }
                 </div>
             )}
              </Dropzone>
-             <TextField  
-                            type="text"
-                            name='firstname'
-                          
-                            floatingLabelText='Firstname'
-                            floatingLabelFocusStyle={{color: '#4D4D4D',
-                            fontSize: '1.2em'   
-                            }}
-                            style={{color: '#4D4D4D',
-                            fontSize: '1.2em'    
-                            }}
-                            value={this.state.firstname}
-                            onChange={this.handleChange}/>
+             <input
+                    className='input'
+                    placeholder='Type your name...'
+                    label='Name'
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.handleChange}/>
              </div>
-             </MuiThemeProvider>
+           
 
         )
     }
 }
-export default ImageDropZone
+function mapStateToProps(state){
+    return state
+}
+export default connect(mapStateToProps, {})(ImageDropZone)

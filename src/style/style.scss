@@ -150,11 +150,38 @@ $font: 'Ubuntu', sans-serif;
     align-items: center;
     height: 30vh;
     width: 100vw;
+    .input{
+        background-color: $blue;
+        border: none;
+        border-bottom: 2px solid white;
+        color: $white;
+        font-family: $font;
+        margin-top: 5%;
+        font-size: 1.4em;
+        padding-bottom: 2%;
+
+    }
+    .imageDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        border: 5px solid $white;
+        overflow: hidden;
+        img{
+            height: 100%;
+            width: auto;
+            border-radius: 50%;
+        }
+    }
     .iconDiv{
         display: flex;
         justify-content: center;
         align-items: center;
-        background: $lightgrey;
+        background: rgb(195, 195, 195);
         color: $white;
         border-radius: 50%;
         height: 100px;

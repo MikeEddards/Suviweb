@@ -1,7 +1,7 @@
 import React from 'react';
 import {HashRouter} from 'react-router-dom'
 import routes from './routes'
-import ImageDropZone from './Components/ImageDropZone'
+import MovieSearch from './Components/MovieSearch'
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <HashRouter >
-      <ImageDropZone/>
+      <MovieSearch/>
       {/* {routes} */}
     </HashRouter>
   );

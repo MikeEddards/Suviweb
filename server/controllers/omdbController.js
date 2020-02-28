@@ -5,8 +5,9 @@ module.exports = {
 
     searchByTitle: async (req, res) =>{
         const { title } = req.body
-        axios.get(`${movieRequest}t=${title}`).then(response =>{
-            return res.status(200).send(response.data)
+        axios.get(`${movieRequest}s=${title}`).then(response =>{
+         
+            return res.status(200).send(response.data.Search)
         })
     } 
 }

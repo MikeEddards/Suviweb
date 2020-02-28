@@ -40,7 +40,6 @@ function reducer (state = initialState, action){
             default:
                 return state
             }
-        }
-        console.log('reducer')
+}
 
 export default reducer

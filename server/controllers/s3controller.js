@@ -5,9 +5,9 @@ const {S3_BUCKET,
  
 module.exports = {
     awsCall: (req, res) => {
-
+      console.log('here')
         aws.config = {
-            region: 'us-west-1',
+            region: 'us-east-2',
             accessKeyId: AWS_ACCESS_KEY_ID,
             secretAccessKey: AWS_SECRET_ACCESS_KEY
           }
