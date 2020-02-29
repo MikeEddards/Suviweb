@@ -27,13 +27,13 @@ $font: 'Ubuntu', sans-serif;
         justify-content: center;
         border: 1px solid $white;
         h1{
-            margin-right: 20%;
+            // margin-right: 20%;
             color: $white;
             font-family: $font;
             font-weight: 600;
         }
         .icon{
-            margin: 0 20% 0 5%;
+            margin: 0 15% 0 5%;
         }
         &:hover{
             cursor: pointer;
@@ -44,7 +44,7 @@ $font: 'Ubuntu', sans-serif;
 .Loginpage{
     background: $blue;
     height: 100vh;
-    width: 100vw;
+    width: 100VW;
     display: flex;
     flex-direction: column;
 
@@ -140,5 +140,58 @@ $font: 'Ubuntu', sans-serif;
             font-family: $font;
             color: $white;
         }
+    }
+}
+.uploadimage{
+    background: $blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    width: 100vw;
+    .input{
+        background-color: $blue;
+        border: none;
+        border-bottom: 2px solid white;
+        color: $white;
+        font-family: $font;
+        margin-top: 5%;
+        font-size: 1.4em;
+        padding-bottom: 2%;
+
+    }
+    .imageDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $white;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        border: 5px solid $white;
+        overflow: hidden;
+        img{
+            height: 100%;
+            width: auto;
+            border-radius: 50%;
+        }
+    }
+    .iconDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgb(195, 195, 195);
+        color: $white;
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+        border: 5px solid $white;
+        p{
+            font-family: $font;
+            font-weight: bold;
+            
+        }
+    
     }
 }

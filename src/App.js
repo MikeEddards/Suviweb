@@ -1,6 +1,7 @@
 import React from 'react';
 import {HashRouter} from 'react-router-dom'
 import routes from './routes'
+import MovieSearch from './Components/MovieSearch'
 
 
 function App() {
@@ -8,7 +9,8 @@ function App() {
 
   return (
     <HashRouter >
-      {routes}
+      <MovieSearch/>
+      {/* {routes} */}
     </HashRouter>
   );
 }

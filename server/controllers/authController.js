@@ -1,9 +1,15 @@
 const bcrypt = require('bcryptjs')
 
 module.exports = {
-
+    fBookRegisterCheck: async (req, res) =>{
+        const {email} = req.body
+        const db = req.app.get('db')
+        const findUser = await db.check_username({email})
+        if(findUser[0]){
+          return  res.status(200).send(true)
+        }else return res.status(200).send(false) 
+    },
     register: async (req, res) => {
-        console.log(req.body)
         const {email} = req.body
         const db = req.app.get('db')
         const {session} = req

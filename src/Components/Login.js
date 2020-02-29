@@ -5,8 +5,8 @@ import { Link, withRouter } from 'react-router-dom'
 
 import {connect} from 'react-redux'
 import FbookLogin from './FbookLogin'
-// import { updateUser } from '../redux/reducer'
 import logo from '../Assets/SuviLogo.png'
+// import { updateUser } from '../redux/reducer'
 
 
 class Login extends Component {
@@ -60,7 +60,7 @@ class Login extends Component {
           <div className='linkctn'>
             <h1 className='title'>Don't have an account?</h1>
             <div>
-            <Link 
+            <Link to='register' 
             ><h1 className='links' >Sign up here!</h1></Link>
             </div>
           </div>

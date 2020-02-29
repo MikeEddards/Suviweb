@@ -5,26 +5,65 @@ import { faFacebookF } from '@fortawesome/free-brands-svg-icons'
 import {Link, withRouter } from 'react-router-dom' 
 import { connect } from 'react-redux'
 import { updateUserFb } from '../redux/reducer'
+import axios from 'axios'
 
 
 export class FbookLogin extends Component {
-   
+   state = {
+       email: '',
+       isRegistered: ''
+   }
 
-    handleFacebookRes = (res) => {
-        this.props.updateUserFb(res)
+    handleFacebookRes = (fbres) => {
+        console.log(fbres)
+        this.setState({
+            email: fbres.email
+        })
+        if(this.props.history.location.pathname === '/register'){
+            axios.post('/auth/registerfb', {
+                email: this.state.email
+            }).then(res => {
+                console.log(res.data)
+                this.setState({
+                    isRegistered: res.data
+                })
+            }).then(_ => {
+                if(this.setState.isRegistered){
+                    this.props.updateUserFb(fbres)
+                }else{
+                    alert('Not registered')
+                }
+            })
+        }else{
+            axios.post('/auth/fbregistered', {
+                email: this.state.email
+            }).then(res => {
+                console.log(res.data)
+                this.setState({
+                    isRegistered: res.data
+                })
+            }).then(_ => {
+                if(this.setState.isRegistered){
+                    this.props.updateUserFb(fbres)
+                }else{
+                    alert('Not registered')
+                }
+            })
+        }
+        
  
     }      
 
     render() {
+        console.log(this.props)
         return (
+        <Link>   
             <div className='fbcontainer'>
-               <Link>   
                 <FacebookLogin 
                     appId={process.env.REACT_APP_FACEBOOK_ID}
                     autoLoad={false}
                     fields="name,email,picture"
                     callback={this.handleFacebookRes}
-                    onClick={this.handleError}
                     scope="public_profile,user_friends"
                     render={renderProps => (
                         
@@ -37,17 +76,18 @@ export class FbookLogin extends Component {
                            color={'#ffffff'}
                            size='1x'
                            />
-                           <h1>Login with Facebook</h1>
+                           {this.props.history.location.pathname === '/register'? <h1>Register with Facebook</h1> : <h1>Login with Facebook</h1> }
+                           
                         </div>
 
                     )}
                 />
-                </Link>    
             </div>
+        </Link>    
         )
     }
 }
 function mapStateToProps(state){
     return state
 }
-export default connect(mapStateToProps, {updateUserFb})(FbookLogin)
+export default withRouter(connect(mapStateToProps, {updateUserFb})(FbookLogin))
